@@ -4,7 +4,7 @@ import shutil
 from PIL import Image
 
 
-model = torch.hub.load('ultralytics/yolov5', 'yolov5s', force_reload=True)
+model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
 
 def delete_folder(path):
     try:
@@ -29,6 +29,7 @@ def main():
 
         final_image = Image.open('runs/detect/exp/image0.jpg')
         st.image(final_image, caption='Detected Image.')
+        st.table(result.pandas().xyxy[0])
 
 
 if __name__ == '__main__':
